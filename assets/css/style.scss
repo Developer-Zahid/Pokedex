@@ -40,7 +40,7 @@ body
 }
 
 html{
-    font-size: clamp(5px, 1vw, 10px);
+    font-size: clamp(6px, 1vw, 10px);
 }
 
 body{
@@ -54,6 +54,15 @@ body{
     padding: 5em;
     background-color: $color-card;
     border: 0.8em solid $color-border;
+
+    &__main{
+        &__header{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            align-items: center;
+        }
+    }
 }
 
 .btn{
@@ -62,10 +71,16 @@ body{
     &--xl{
         font-size: 7rem;
     }
+    &--lg{
+        font-size: 4.5rem;
+    }
+    &--md{
+        font-size: 3rem;
+    }
 
     width: 1em;
     height: 1em;
-    border: 0.12em solid $color-border;
+    border: 0.13em solid $color-border;
     box-shadow:
         inset 0.06em 0.06em 0 $color-white,
         inset -0.07em -0.07em 0 rgba($color-black, $alpha: 0.3);
@@ -99,5 +114,11 @@ body{
     }
     &--info{
         background-color: $color-bg;
+    }
+    &--warning{
+        background-color: $color-warning;
+    }
+    &--success{
+        background-color: $color-success;
     }
 }

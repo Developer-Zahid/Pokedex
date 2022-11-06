@@ -25,7 +25,7 @@ body {
 }
 
 html {
-  font-size: clamp(5px, 1vw, 10px);
+  font-size: clamp(6px, 1vw, 10px);
 }
 
 body {
@@ -40,16 +40,28 @@ body {
   background-color: #df3b27;
   border: 0.8em solid #2e2d2d;
 }
+.card__main__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
 
 .btn {
   font-size: 2.5rem;
   width: 1em;
   height: 1em;
-  border: 0.12em solid #2e2d2d;
+  border: 0.13em solid #2e2d2d;
   box-shadow: inset 0.06em 0.06em 0 #ffffff, inset -0.07em -0.07em 0 rgba(0, 0, 0, 0.3);
 }
 .btn--xl {
   font-size: 7rem;
+}
+.btn--lg {
+  font-size: 4.5rem;
+}
+.btn--md {
+  font-size: 3rem;
 }
 .btn--glace {
   position: relative;
@@ -74,4 +86,10 @@ body {
 }
 .btn--info {
   background-color: #44b6f9;
+}
+.btn--warning {
+  background-color: #fea702;
+}
+.btn--success {
+  background-color: #36b546;
 }/*# sourceMappingURL=style.css.map */
