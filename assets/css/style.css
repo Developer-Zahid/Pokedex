@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;500&display=swap");
+*::before,
+*::after,
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::-moz-selection {
+  color: #ffffff;
+  background-color: #df3b27;
+}
+
+::selection {
+  color: #ffffff;
+  background-color: #df3b27;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: clamp(5px, 1vw, 10px);
+}
+
+body {
+  display: grid;
+  place-items: center;
+  font-family: "Saira Semi Condensed", sans-serif;
+  background-color: #44b6f9;
+}
+
+.card {
+  padding: 5em;
+  background-color: #df3b27;
+  border: 0.8em solid #2e2d2d;
+}
+
+.btn {
+  font-size: 2.5rem;
+  width: 1em;
+  height: 1em;
+  border: 0.12em solid #2e2d2d;
+  box-shadow: inset 0.06em 0.06em 0 #ffffff, inset -0.07em -0.07em 0 rgba(0, 0, 0, 0.3);
+}
+.btn--xl {
+  font-size: 7rem;
+}
+.btn--glace {
+  position: relative;
+  box-shadow: inset 0.06em 0.06em 0 #ffffff, inset 0.13em 0.13em 0 rgba(255, 255, 255, 0.45), inset -0.07em -0.07em 0 rgba(0, 0, 0, 0.3);
+}
+.btn--glace::after {
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  width: 20%;
+  height: 20%;
+  border-radius: inherit;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0.12em -0.1em 0 -0.03em rgba(255, 255, 255, 0.7);
+}
+.btn--rounded {
+  border-radius: 50%;
+}
+.btn--danger {
+  background-color: #df3b27;
+}
+.btn--info {
+  background-color: #44b6f9;
+}/*# sourceMappingURL=style.css.map */

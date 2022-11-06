@@ -1,0 +1,103 @@
+// SCSS Variables
+
+$color-bg: #44b6f9;
+$color-card: #df3b27;
+$color-glass--light: #cdfffe;
+$color-glass--dark: #282828;
+$color-border: #2e2d2d;
+$color-warning: #fea702;
+$color-success: #36b546;
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+$font-primary: 'Saira Semi Condensed', sans-serif;
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;500&display=swap');
+
+*::before,
+*::after,
+*
+{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection{
+    color: $color-white;
+    background-color: $color-card;
+}
+
+html,
+body
+{
+    height: 100%;
+}
+
+html{
+    font-size: clamp(5px, 1vw, 10px);
+}
+
+body{
+    display: grid;
+    place-items: center;
+    font-family: $font-primary;
+    background-color: $color-bg;
+}
+
+.card{
+    padding: 5em;
+    background-color: $color-card;
+    border: 0.8em solid $color-border;
+}
+
+.btn{
+    font-size: 2.5rem;
+
+    &--xl{
+        font-size: 7rem;
+    }
+
+    width: 1em;
+    height: 1em;
+    border: 0.12em solid $color-border;
+    box-shadow:
+        inset 0.06em 0.06em 0 $color-white,
+        inset -0.07em -0.07em 0 rgba($color-black, $alpha: 0.3);
+
+    &--glace{
+        position: relative;
+        box-shadow:
+            inset 0.06em 0.06em 0 $color-white,
+            inset 0.13em 0.13em 0 rgba($color-white, $alpha: 0.45),
+            inset -0.07em -0.07em 0 rgba($color-black, $alpha: 0.3);
+
+        &::after{
+            content: "";
+            position: absolute;
+            top: 25%;
+            left: 20%;
+            width: 20%;
+            height: 20%;
+            border-radius: inherit;
+            background-color: rgba($color-white, $alpha: 0.7);
+            box-shadow: 0.12em -0.1em 0 -0.03em rgba($color-white, $alpha: 0.7);
+        }
+    }
+
+    &--rounded{
+        border-radius: 50%;
+    }
+
+    &--danger{
+        background-color: $color-card;
+    }
+    &--info{
+        background-color: $color-bg;
+    }
+}
