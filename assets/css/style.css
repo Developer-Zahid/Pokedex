@@ -33,18 +33,87 @@ body {
   place-items: center;
   font-family: "Saira Semi Condensed", sans-serif;
   background-color: #44b6f9;
+  padding: 15px;
 }
 
-.card {
+@media (min-width: 800px) {
+  .card {
+    display: flex;
+  }
+}
+.card__main {
   padding: 5em;
-  background-color: #df3b27;
   border: 0.8em solid #2e2d2d;
+  background-color: #df3b27;
 }
 .card__main__header {
   display: flex;
   flex-direction: column;
   gap: 1em;
   align-items: center;
+}
+.card__hinge {
+  position: relative;
+  background-color: #df3b27;
+  padding: 2rem;
+  border: 0.8em solid #2e2d2d;
+}
+@media (max-width: 799.98px) {
+  .card__hinge {
+    border-top: 0;
+  }
+}
+@media (min-width: 800px) {
+  .card__hinge {
+    border-left: 0;
+    border-top-right-radius: 1.7em;
+  }
+}
+.card__hinge::before, .card__hinge::after {
+  content: "";
+  position: absolute;
+}
+@media (max-width: 799.98px) {
+  .card__hinge::before, .card__hinge::after {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+}
+@media (min-width: 800px) {
+  .card__hinge::before, .card__hinge::after {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+  }
+}
+.card__hinge::before {
+  background-color: rgba(255, 255, 255, 0.28);
+}
+@media (max-width: 799.98px) {
+  .card__hinge::before {
+    height: 50.5%;
+  }
+}
+@media (min-width: 800px) {
+  .card__hinge::before {
+    width: 50.5%;
+  }
+}
+.card__hinge::after {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+@media (max-width: 799.98px) {
+  .card__hinge::after {
+    height: 12.5%;
+  }
+}
+@media (min-width: 800px) {
+  .card__hinge::after {
+    width: 12.5%;
+  }
 }
 
 .btn {

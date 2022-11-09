@@ -13,6 +13,9 @@ $color-black: #000000;
 
 $font-primary: 'Saira Semi Condensed', sans-serif;
 
+$min-break-point: 800px;
+$max-break-point: 799.98px;
+
 
 
 @import url('https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;500&display=swap');
@@ -48,19 +51,77 @@ body{
     place-items: center;
     font-family: $font-primary;
     background-color: $color-bg;
+    padding: 15px;
 }
 
 .card{
-    padding: 5em;
-    background-color: $color-card;
-    border: 0.8em solid $color-border;
 
+    @media (min-width: $min-break-point) {
+        display: flex;
+    }
+    
     &__main{
+        padding: 5em;
+        border: 0.8em solid $color-border;
+        background-color: $color-card;
         &__header{
             display: flex;
             flex-direction: column;
             gap: 1em;
             align-items: center;
+        }
+    }
+
+    &__hinge{
+        position: relative;
+        background-color: $color-card;
+        padding: 2rem;
+        border: 0.8em solid $color-border;
+        @media (max-width: $max-break-point) {
+            border-top: 0;
+        }
+        @media (min-width: $min-break-point) {
+            border-left: 0;
+            border-top-right-radius: 1.7em;
+        }
+
+        &::before,
+        &::after
+        {
+            content: "";
+            position: absolute;
+            @media (max-width: $max-break-point) {
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                width: 100%;
+            }
+            @media (min-width: $min-break-point) {
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 100%;
+            }
+        }
+
+        &::before{
+            background-color: rgba($color-white, $alpha: 0.28);
+            @media (max-width: $max-break-point) {
+                height: 50.5%;
+            }
+            @media (min-width: $min-break-point) {
+                width: 50.5%;
+            }
+        }
+
+        &::after{
+            background-color: rgba($color-white, $alpha: 0.8);
+            @media (max-width: $max-break-point) {
+                height: 12.5%;
+            }
+            @media (min-width: $min-break-point) {
+                width: 12.5%;
+            }
         }
     }
 }
