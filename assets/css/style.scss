@@ -17,6 +17,9 @@ $min-break-point: 800px;
 $max-break-point: 799.98px;
 
 $border-width: 0.8em;
+$border-width--thin: 0.24em;
+$border-radius: 2.5em;
+$safe-space: 1px;
 
 
 
@@ -42,6 +45,14 @@ html,
 body
 {
     height: 100%;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar
+{
+    display: none;
+    width: 0;
 }
 
 html{
@@ -57,71 +68,95 @@ body{
 }
 
 .card{
-
     @media (min-width: $min-break-point) {
         display: flex;
     }
     
     &__main{
-        border: $border-width solid $color-border;
-        background-color: $color-card;
-        border-top-left-radius: 2.5em;
-        @media (max-width: $max-break-point) {
-            border-top-right-radius: 2.5em;
+        &__header,
+        &__body
+        {
+            background-color: $color-card;
         }
-        @media (min-width: $min-break-point) {
-            border-bottom-left-radius: 2.5em;
-        }
-        
         &__header{
             position: relative;
             display: flex;
             align-items: flex-start;
             gap: 1em;
-            padding: 1em 1em 1em;
+            padding: 1em 1em ($border-width+ $border-radius);
             padding-right: 4em;
-            border-top-left-radius: 1.5em;
+            border: $border-width solid $color-border;
+            border-bottom: 0;
+            border-top-left-radius: $border-radius;
             @media (max-width: $max-break-point) {
-                border-top-right-radius: 1.5em;
+                border-top-right-radius: $border-radius;
+            }
+            box-shadow: inset ($border-width / 1.5 ) ($border-width / 1.5 ) 0 rgba($color-white, $alpha: 0.6);
+        }
+        
+        &__body{
+            $connection-point: 56%;
+            $sudo-element-height: 25%;
+            margin-top: $border-radius * -1;
+            position: relative;
+            border: $border-width solid $color-border;
+            border-top-left-radius: $border-radius;
+            @media (min-width: $min-break-point) {
+                border-bottom-left-radius: $border-radius;
             }
             box-shadow:
-                inset ($border-width / 1.5 ) ($border-width / 1.5 ) 0 rgba($color-white, $alpha: 0.6);
+                inset 0 0 0 ($border-width / 2) darken($color-card, $amount: 20),
+                inset 0 0 0 (($border-width / 2) + $border-width--thin) $color-border; 
+            padding-bottom: 25em;
 
             &::before,
             &::after
             {
-                // content: "";
-                position: absolute;
-            }
-        }
-        
-        &__body{
-            position: relative;
-            box-shadow:
-                inset 0 0 0 0.24em $color-border,
-                ($border-width / 2 * -1) ($border-width * -1) 0 $color-border;
-            border: ($border-width / 2) solid darken($color-card, $amount: 20);
-            border-top-left-radius: 2em;
-            @media (min-width: $min-break-point) {
-                border-bottom-left-radius: 1.5em;
-            }
-            padding-bottom: 25em;
-            &::after{
                 content: "";
                 position: absolute;
-                right: ((($border-width / 2) + $border-width) * -1);
-                top: 0.24em;
                 transform: translateY(-100%);
-                width: 60%;
-                height: 20%;
+                height: $sudo-element-height;
                 border: $border-width solid $color-border;
-                border-top-left-radius: 2em;
-                background-color: $color-card;
-                border-bottom-color: $color-card;
+            }
+
+            &::before{
+                z-index: 1;
+                top: 0;
+                right: calc($connection-point - $border-width);
+                width: calc($border-radius + ($border-radius / 2));
+                border-top: 0;
+                border-left: 0;
+                border-bottom-right-radius: 2em;
+                clip-path: polygon(
+                    100% 64%,
+                    calc(100% + ($border-width * 2)) 64%,
+                    calc(100% + ($border-width * 2)) calc(100% + ($border-width * 2)),
+                    5% calc(100% + ($border-width * 2)),
+                    5% 64%
+                );
                 box-shadow:
-                    inset 0 ((($border-width / 2) + 0.24em)* -1) 0 $color-card,
+                    0 0 0 ($border-width / 2) darken($color-card, $amount: 20),
+                    0 0 0 (($border-width / 2) + $border-width--thin) $color-border,
+                    0 0 0 (($border-width * 2) + $border-width--thin) $color-card;
+            }
+
+            &::after{
+                top: calc(($border-width / 2) + $border-width + $border-width--thin + $safe-space);
+                right: 0;
+                width: $connection-point;
+                background-color: $color-card;
+                border-bottom: 0;
+                border-right: 0;
+                border-top-left-radius: 2em;
+                clip-path: polygon(
+                    0 0,
+                    100% 0,
+                    100% calc(100% - (($border-width / 2) + $border-width--thin + $safe-space)),
+                    0 calc(100% - (($border-width / 2) + $border-width--thin + $safe-space))
+                );
+                box-shadow:
                     inset 0 0 0 ($border-width / 2) darken($color-card, $amount: 20),
-                    inset 0 0 0 (($border-width / 2) + 0.24em) $color-border;
+                    inset 0 0 0 (($border-width / 2) + $border-width--thin) $color-border;
             }
         }
     }
