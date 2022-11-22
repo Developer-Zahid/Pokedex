@@ -67,6 +67,11 @@ body{
     padding: 15px;
 }
 
+img{
+    max-width: 100%;
+    display: block;
+}
+
 .card{
     @media (min-width: $min-break-point) {
         display: flex;
@@ -96,7 +101,7 @@ body{
         
         &__body{
             $connection-point: 56%;
-            $sudo-element-height: 25%;
+            $sudo-element-height: 6rem;
             margin-top: $border-radius * -1;
             position: relative;
             border: $border-width solid $color-border;
@@ -107,7 +112,7 @@ body{
             box-shadow:
                 inset 0 0 0 ($border-width / 2) darken($color-card, $amount: 20),
                 inset 0 0 0 (($border-width / 2) + $border-width--thin) $color-border; 
-            padding-bottom: 25em;
+            padding: 2em;
 
             &::before,
             &::after
@@ -137,7 +142,7 @@ body{
                 box-shadow:
                     0 0 0 ($border-width / 2) darken($color-card, $amount: 20),
                     0 0 0 (($border-width / 2) + $border-width--thin) $color-border,
-                    0 0 0 (($border-width * 2) + $border-width--thin) $color-card;
+                    0 0 0 (($border-width * 2) + ($border-width--thin * 2)) $color-card;
             }
 
             &::after{
@@ -157,6 +162,16 @@ body{
                 box-shadow:
                     inset 0 0 0 ($border-width / 2) darken($color-card, $amount: 20),
                     inset 0 0 0 (($border-width / 2) + $border-width--thin) $color-border;
+            }
+
+            &__tv{
+                position: relative;
+                &__screen{
+                    &__image{
+                        max-height: 12rem;
+                        margin: auto;
+                    }
+                }
             }
         }
     }
